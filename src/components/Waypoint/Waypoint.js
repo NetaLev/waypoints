@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Waypoint.css'
 
-const Waypoint = ({data}) => {
-  return (
-    <div className="waypoint">
-      {/* TODO: add functionality with redux */}
-      <span className="x-close" role="img" aria-label="close">&#x274C;</span>
-      <div className="waypoint-data">{`${data.latitude}, ${data.longitude}`}</div>
-    </div>
-  );
+class Waypoint extends Component {
+  handleWaypointXCloseClick = (waypointToRemove) => (e) => {
+    this.props.removeWaypoint(waypointToRemove);
+  }
+
+  handleWaypointClick = (selectedWaypoint) => (e) => {
+    this.props.selectWaypoint(selectedWaypoint);
+  }
+
+  render() {
+    const { data } = this.props;
+    return (
+      <div className="waypoint" onClick={this.handleWaypointClick(data)}>
+        <span
+          onClick={this.handleWaypointXCloseClick(data)}
+          className="x-close"
+          role="img"
+          aria-label="close">
+          &#x274C;
+        </span>
+        <div className="waypoint-data">{`${data.latitude}, ${data.longitude}`}</div>
+      </div>
+    );
+  }
 };
 
 export default Waypoint;

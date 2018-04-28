@@ -19,6 +19,10 @@ export const addWaypoint = waypoint => {
                 type: ADD_WAYPOINT,
                 newWaypoint: waypoint
             });
+            dispatch({
+                type: UPDATE_MESSAGE_TO_USER,
+                messageToUser: ''
+            });
         }).catch((err) => {
             dispatch({
                 type: UPDATE_MESSAGE_TO_USER,

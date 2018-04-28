@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import Map from './components/Map/Map';
-import AddWaypointForm from './components/AddWaypointForm/AddWaypointForm';
-import Waypoints from './components/Waypoints/Waypoints';
+import MapContainer from './containers/MapContainer';
+//import Map from './components/Map/Map';
+import AddWaypointFormContainer from './containers/AddWaypointFormContainer';
+//import AddWaypointForm from './components/AddWaypointForm/AddWaypointForm';
+import WaypointsContainer from './containers/WaypointsContainer';
+//import Waypoints from './components/Waypoints/Waypoints';
 import './App.css';
 
 
@@ -10,10 +13,10 @@ class App extends Component {
     return (
       <React.Fragment>
         <div className="sidebar">
-          <AddWaypointForm />
-          <Waypoints />
+          <AddWaypointFormContainer />
+          <WaypointsContainer />
         </div>
-        <Map
+        <MapContainer
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div className='loadingElementStyle' />}
           containerElement={<div className='containerElementStyle' />}

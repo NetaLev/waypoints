@@ -1,5 +1,4 @@
-/*TODO: refactor: move to classes*/
-
+/*TODO: refactor: change to classes*/
 form {
     margin: 1.5rem;
 }
@@ -14,6 +13,17 @@ form input {
 form input[type="text"] {
     padding-left: 1rem;
     width: 21rem;
+}
+
+.message-to-user {
+    margin-top: 0.8rem;
+    max-width: 26rem;
+    line-height: 1.8rem;
+    color: darkred;
+    background: #ffd6d6db;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    border: 1px darkred solid
 }
 
 @media only screen and (max-width: 767px) {

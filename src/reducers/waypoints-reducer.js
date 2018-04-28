@@ -11,7 +11,7 @@ export default function(state = [] /*waypoints*/, action) {
   }
 
   if (action.type === REMOVE_WAYPOINT) {
-    return state.filter(waypoint => !isEqual(action.waypointToDelete, waypoint));
+    return state.filter(waypoint => !isEqual(action.waypointToRemove, waypoint));
   }
 
   return state;

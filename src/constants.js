@@ -9,5 +9,5 @@ export const UPDATE_ALL_WAYPOINTS = 'UPDATE_ALL_WAYPOINTS';
 export const messageToUser = {
     WAYPOINT_ALREADY_LISTED: `The waypoint you have entered is already listed.`,
     INVALID_WAYPOINT_INPUT: `Invalid waypoint input. Please enter a waypoints in the following format:
-    X, Y ( -90 <= X <= 90 and -180 <= Y <= 180 )`,
+    X, Y ( -85 <= X <= 85 and -180 <= Y <= 180 )`,
 };

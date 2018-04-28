@@ -1,31 +1,41 @@
 import localforage from 'localforage';
-import { contains, isEqual } from 'underscore';
+import { any, isEqual, isEmpty } from 'underscore';
 import { messageToUser } from './constants';
 
-/*todo: maybe add localforage errors handling*/
+/*TODO (optional): add localforage errors handling*/
 
 window.localforage = localforage;
 
 const getAllWaypoints = async () => {
     const waypoints = await localforage.getItem('waypoints');
-    if (!waypoints) await localforage.setItem('waypoints', []);
-    return waypoints || [];
+    if (!waypoints || isEmpty(waypoints)) {
+        const defaultWaypoints = [];
+        localforage.setItem('waypoints', defaultWaypoints);
+        return defaultWaypoints;
+    }
+    return waypoints;
 };
 
+
 const getSelectedWaypoint = async () => {
-    const selectedWaypoint = await localforage.getItem('selectedWaypoint');
-    if (!selectedWaypoint) await localforage.setItem('selectedWaypoint', {});
-    return selectedWaypoint || { latitude: 0, longitude: 0 }; /*return is not necessary*/
+    let selectedWaypoint = await localforage.getItem('selectedWaypoint');
+    if (!selectedWaypoint || isEmpty(selectedWaypoint)) {
+        const defaultSelectedWaypoint = { latitude: 0, longitude: 0 };
+        localforage.setItem('selectedWaypoint', defaultSelectedWaypoint);
+        return defaultSelectedWaypoint;
+    }
+    return selectedWaypoint;
 };
 
 export default {
     async addWaypoint(newWaypoint) {
         const waypoints = await getAllWaypoints();
-        if (contains(waypoints, newWaypoint)) {
+        /*TODO: refactor: move any gist to seperate deepContains function in a custom utils library*/
+        if (any(waypoints, function(waypoint){ return isEqual(waypoint, newWaypoint); })) {
             throw Error(messageToUser.WAYPOINT_ALREADY_LISTED);
         }
-        /*await*/localforage.setItem('waypoints', [...waypoints, newWaypoint]);
-        return newWaypoint; /*return is not necessary*/
+        localforage.setItem('waypoints', [...waypoints, newWaypoint]);
+        return newWaypoint;
     },
 
     async getAllWaypoints() {
@@ -38,14 +48,13 @@ export default {
 
     async removeWaypoint(waypointToDelete) {
         const waypoints = await getAllWaypoints();
-        /*check if works*/
-        /*await*/localforage.setItem('waypoints', waypoints.filter(waypoint => !isEqual(waypointToDelete, waypoint)));
-        return waypointToDelete; /*return is not necessary*/
+        localforage.setItem('waypoints', waypoints.filter(waypoint => !isEqual(waypointToDelete, waypoint)));
+        return waypointToDelete;
     },
 
     async selectWaypoint(waypoint) {
-        /*await*/localforage.setItem('selectedWaypoint', waypoint);
-        return waypoint; /*return is not necessary*/
+        localforage.setItem('selectedWaypoint', waypoint);
+        return waypoint;
     }
 
 };

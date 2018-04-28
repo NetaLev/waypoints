@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Waypoints.css';
 import Waypoint from '../Waypoint/Waypoint';
 
-// TODO: use https://www.random.org/geographic-coordinates/
+/*TODO: feature: add scroller*/
+class Waypoints extends Component {
+  
+  render() {
+    const { waypoints, removeWaypoint, selectWaypoint } = this.props;
 
-const Waypoints = (props) => {
+    return (
+      <div>
+        {waypoints.map(
+          (waypoint, index) =>
+            /*INFO: waypoint pair value is unique, therefor will be a great key*/
+            <Waypoint
+              selectWaypoint= {selectWaypoint}
+              removeWaypoint = {removeWaypoint}
+              key={`${waypoint.latitude}-${waypoint.longitude}`}
+              data={waypoint} />
+        )}
+      </div>
+    );
+  }
 
-  const waypoints = [{latitude: 1.98171123, longitude: -80.49862321},
-    {latitude: 55.98171123, longitude: 7.49862321}];
-
-  return (
-    <div>
-      {waypoints.map(
-        (waypoint, index) =>
-        /*INFO: waypoint pair value is unique, therefor will be a great key*/
-        <Waypoint 
-        key={`${waypoint.latitude}-${waypoint.longitude}`}
-        data={waypoint}/>
-      )}
-    </div>
-  );
-};
+}
 
 export default Waypoints;

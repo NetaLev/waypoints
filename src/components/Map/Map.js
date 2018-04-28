@@ -3,14 +3,13 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 import './Map.css';
 
 const Map = (props) => {
-  const selectedWaypoint= {latitude: 0, longitude: 0};
-  const waypoints = [{ latitude: 1.98171123, longitude: -80.49862321 },
-  { latitude: 55.98171123, longitude: 7.49862321 }];
+  const { waypoints, selectedWaypoint } = props;
 
   return (
     <GoogleMap
       defaultZoom={3}
-      defaultCenter={{ lat: selectedWaypoint.latitude, lng: selectedWaypoint.longitude }}
+      defaultCenter={{ lat: 0, lng: 0 }}
+      center={{ lat: selectedWaypoint.latitude, lng: selectedWaypoint.longitude }}
     >
       {waypoints.map(
         (waypoint, index) =>
@@ -19,7 +18,6 @@ const Map = (props) => {
             position={{ lat: waypoint.latitude, lng: waypoint.longitude }}
           />
       )}
-
     </GoogleMap>
   );
 };

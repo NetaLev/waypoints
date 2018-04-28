@@ -13,6 +13,7 @@
 
 .waypoint-data {
     padding: 1.7rem;
+    cursor: pointer;
 }
 
 @media only screen and (max-width : 767px) {
