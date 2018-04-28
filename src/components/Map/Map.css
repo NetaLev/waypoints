@@ -1,0 +1,19 @@
+/* === Map CSS === TODO: better naming*/
+.mapElementStyle {
+    height: 100%;
+  }
+  
+  .containerElementStyle {
+    width: 100%;
+    margin-left: 0;
+    height: 100vh;
+  }
+  
+  .loadingElementStyle {
+    height: 350;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: 0;
+  }

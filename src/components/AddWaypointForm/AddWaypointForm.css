@@ -1,0 +1,33 @@
+/*TODO: refactor: move to classes*/
+
+form {
+    margin: 1.5rem;
+}
+
+form input {
+    font-size: large;
+    margin-right: 1rem;
+    line-height: 1.6rem;
+    padding: 0.5rem;
+}
+
+form input[type="text"] {
+    padding-left: 1rem;
+    width: 21rem;
+}
+
+@media only screen and (max-width: 767px) {
+    form {
+        margin: 5vw;
+        width:90vw;
+    }
+
+    form input, form input[type="text"] {
+        width: 90vw;
+        box-sizing: border-box;
+    }
+
+    form input[type="text"] {
+        margin-bottom: 0.3rem;
+    }
+}
