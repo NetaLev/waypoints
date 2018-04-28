@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import MapContainer from './containers/MapContainer';
-//import Map from './components/Map/Map';
 import AddWaypointFormContainer from './containers/AddWaypointFormContainer';
-//import AddWaypointForm from './components/AddWaypointForm/AddWaypointForm';
 import WaypointsContainer from './containers/WaypointsContainer';
-//import Waypoints from './components/Waypoints/Waypoints';
 import './App.css';
 
 
@@ -22,9 +19,7 @@ class App extends Component {
           containerElement={<div className='containerElementStyle' />}
           mapElement={<div className='mapElementStyle' />}
         />
-
       </React.Fragment>
-
     );
   }
 }
